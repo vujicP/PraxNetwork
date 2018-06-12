@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
+        
+        {% block scripts %}{% endblock %}
+        
+
+        <link rel="stylesheet" href="{% static 'css/buefy.css' %}" type="text/css" />
+    </head>
+    <body>
+        <div class="navbar is-light">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <div>
+                        PraxNetwork
+                    </div>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" >
+                            Tools
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                            <a class="navbar-item" href="/seqanalysis">Sequential Analysis</a>
+                            <a class="navbar-item" href="/networkexplorer">Network Explorer</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end">
+                </div>
+            </div>
+        </div>
+        {% block pagecontent %}
+        {% endblock %}
+        <div class="footer">...</div>
+    </body>
+</html>
