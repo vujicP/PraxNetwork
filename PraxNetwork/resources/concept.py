@@ -69,17 +69,17 @@ def create_abstraction(concept_name, code_name, int_id):
 		concept = get_concept_entity()
 		conn = gen_r()
 		connectInterpretationAndConcept = generic_action(match(interpretation),
-																	  where(entityMap(interpretation, {'id': int_id} )),
-																	  merge(interpretation, conn, entityMap(concept, { 'name': concept_name})),
-																	  ret(entityMap(concept, {'id'})))
+									where(entityMap(interpretation, {'id': int_id} )),
+									merge(interpretation, conn, entityMap(concept, { 'name': concept_name})),
+									ret(entityMap(concept, {'id'})))
 		
 		interpretation = get_interpretation_entity()
 		code = get_node_entity("code", json.loads(concept_name))
 		conn2 = gen_r()
 		connectInterpretationAndCode = generic_action(match(interpretation),
-																	  where(entityMap(interpretation, {'id': int_id} )),
-																	  merge(interpretation, conn2, entityMap(code, {'name': code_name})),
-																	  ret(entityMap(code, {'id'})))
+									where(entityMap(interpretation, {'id': int_id} )),
+									merge(interpretation, conn2, entityMap(code, {'name': code_name})),
+									ret(entityMap(code, {'id'})))
 		
 		
 		concept_id = connectInterpretationAndConcept() 
@@ -91,17 +91,17 @@ def create_abstraction(concept_name, code_name, int_id):
 		code = get_node_entity("code", json.loads(concept_name))
 		conn3 = gen_r()
 		connectConceptAndCode = generic_action(match_indepedent(concept, code),
-														  where(entityMap(concept, {'id': concept_id}), entityMap(code, {'id': code_id})),
-														  merge(concept, conn3, code),
-														  ret(concept, code))
+								where(entityMap(concept, {'id': concept_id}), entityMap(code, {'id': code_id})),
+								merge(concept, conn3, code),
+								ret(concept, code))
 
 		concept = get_concept_entity()
 		metaconcept = get_metaconcept_entity()
 		conn4 = gen_r()
 		connectConceptAndMetaConcept = generic_action(match_indepedent(concept, metaconcept),
-																  where(entityMap(concept, {'id': concept_id}), entityMap(metaconcept, {'id': meta_id})),
-																  merge(concept, conn4, metaconcept),
-																  ret(concept,metaconcept))
+									 where(entityMap(concept, {'id': concept_id}), entityMap(metaconcept, {'id': meta_id})),
+									 merge(concept, conn4, metaconcept),
+									 ret(concept,metaconcept))
 		connectConceptAndCode() 
 		connectConceptAndMetaConcept() 
 

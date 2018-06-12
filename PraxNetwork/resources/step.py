@@ -36,7 +36,7 @@ def create_istep(datadoc_name, name):
 		
 		step = get_step_entity()	
 		createStep = generic_action(merge(entityMap(step, {'name': name})),
-												   ret(entityMap(step, {'id'})))
+									ret(entityMap(step, {'id'})))
 
 		step_id = createStep()
 		

@@ -35,8 +35,8 @@ class SequenceResource(Resource):
 def create_seq(name):
 		datadoc = get_datadoc_entity()
 		getContent = generic_action(match(datadoc), 
-													 where(entityMap(datadoc, { 'name': name })),
-													 ret(entityMap(datadoc, {'content'})))
+						where(entityMap(datadoc, { 'name': name })),
+						ret(entityMap(datadoc, {'content'})))
 
 		content = getContent()
 		if content is None:
@@ -52,13 +52,13 @@ def create_seq(name):
 				conn = gen_r()
 				sequence = get_sequence_entity()
 				createSequence = generic_action(
-									match(datadoc),
-									where(entityMap(datadoc, {
-														'name': name
-													})),
-									 merge(datadoc,conn,entityMap(sequence, { "seqnumber": json.dumps(str(seqnumber)), "content": json.dumps(seq) })),
-									 ret(sequence)
-									 )
+							match(datadoc),
+							where(entityMap(datadoc, {
+									'name': name
+								})),
+							merge(datadoc,conn,entityMap(sequence, { "seqnumber": json.dumps(str(seqnumber)), "content": json.dumps(seq) })),
+							ret(sequence)
+							)
 				createSequence()
 				seqnumber += 1
 

@@ -65,9 +65,9 @@ def create_rel_between_codes(code1_id, code2_id):
 		conn = gen_r()
 
 		connectCodes = generic_action(match_indepedent(code1, code2),
-											  where(entityMap(code1, {'id': code1_id}), entityMap(code2, {'id': code2_id})),
-											  merge(code1, conn, code2),
-											  ret(code1, code2))
+								where(entityMap(code1, {'id': code1_id}), entityMap(code2, {'id': code2_id})),
+								merge(code1, conn, code2),
+								ret(code1, code2))
 
 		connectCodes()
 

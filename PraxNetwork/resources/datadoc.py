@@ -74,9 +74,9 @@ def create_datadoc(name, content):
 	def action():
 		datadoc = get_datadoc_entity()
 		return (merge(entityMap(datadoc,{
-									'name': name,
-									'content': content
-								 })
+						'name': name,
+						'content': content
+					     })
 					  ),
 				ret(datadoc))
 	return action
